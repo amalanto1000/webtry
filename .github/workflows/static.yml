@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/free-vector/watercolor-blue-background_23-2149323831.jpg");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: rgb(32, 27, 27);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .timer {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wedding Invitation</h1>
+        <p>Join us as we celebrate the union of two hearts!</p>
+        <p>Date: <strong>February 14, 2024</strong></p>
+        <p>Time: <strong>4:00 PM</strong></p>
+        <p>Location: <strong>Chalakkudy, Kerala</strong></p>
+        <p>Details about the family:</p>
+        <p>The bride is from the <strong>Joseph's</strong> family, and the groom is from the <strong>Jone's</strong> family. name of bride is <strong>Brite Joseph</strong> & name of groom is Tiya John</p>
+        <div class="timer" id="countdown"></div>
+    </div>
+
+    <script>
+        // Set the wedding date and time
+        const weddingDate = new Date("February 14, 2024 16:00:00").getTime();
+
+        // Update the countdown every 1 second
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (timeLeft < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "The wedding has begun!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
